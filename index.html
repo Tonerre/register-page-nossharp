@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Registration page - Nos# </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/mdb.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+   
+<form action="/register" method="POST">
+        <p class="h4 text-center mb-4">Sign up</p>
+    
+        <div class="md-form">
+            <i class="fa fa-user prefix grey-text"></i>
+            <input type="text" id="materialFormRegisterNameEx" class="form-control" name="Username" required>
+            <label for="materialFormRegisterNameEx">Your name</label>
+        </div>
+    
+        <div class="md-form">
+            <i class="fa fa-envelope prefix grey-text"></i>
+            <input type="email" id="materialFormRegisterEmailEx" class="form-control" name="Email" required>
+            <label for="materialFormRegisterEmailEx">Your email</label>
+        </div>
+    
+        <div class="md-form">
+            <i class="fa fa-lock prefix grey-text"></i>
+            <input type="password" id="materialFormRegisterPasswordEx" class="form-control" name="Password" pattern=".{5,15}" title="5 to 15 characters" required>
+            <label for="materialFormRegisterPasswordEx">Your password</label>
+        </div>
+    
+        
+        <div class="md-form">
+            <i class="fa fa-exclamation-triangle prefix grey-text"></i>
+            <input type="password" id="materialFormRegisterConfirmPasswordEx" class="form-control" name="repeatPassword" pattern=".{5,15}" title="5 to 15 characters" required>
+            <label for="materialFormRegisterConfirmPasswordEx">Confirm your password</label>
+        </div>
+    
+        <div class="text-center mt-4">
+            <button class="btn btn-primary" type="submit">Register</button>
+        </div>
+    </form>
+    
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>            
+</body>
+</html>
