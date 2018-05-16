@@ -1,0 +1,28 @@
+{
+  "name": "register-page-nossharp",
+  "version": "1.0.0",
+  "description": "Css made by tussk.\r This is a basic version of register-page, i will improve it.",
+  "main": "database.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tonerre/register-page-nossharp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tonerre/register-page-nossharp/issues"
+  },
+  "homepage": "https://github.com/Tonerre/register-page-nossharp#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "pg": "^7.4.3",
+    "request-ip": "^2.0.2",
+    "sequelize": "^4.37.7",
+    "sha512": "0.0.1"
+  }
+}
