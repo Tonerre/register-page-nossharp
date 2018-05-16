@@ -24,11 +24,9 @@ sequelize
 const accounts = sequelize.define('accounts', {
     username: {
         type: Sequelize.STRING,
-        primaryKey: true
     },
     email: {
         type: Sequelize.STRING,
-        primaryKey: true
     },
     password: {
         type: Sequelize.STRING
