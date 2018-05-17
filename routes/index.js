@@ -1,4 +1,4 @@
-module.exports = function (app) {
+module.exports = app => {
     const db = require('../database.js');
     const sha512 = require('sha512');
     const reqip = require('request-ip');
@@ -10,7 +10,7 @@ module.exports = function (app) {
     app.post('/register', (req, res) => {
 
         // search for existing username or email
-        db.accounts.findOne({
+        db.Accounts.findOne({
             where: {
                 [db.Sequelize.Op.or]: [
                     { username: req.body.username },
@@ -18,42 +18,41 @@ module.exports = function (app) {
                 ]
             }
         })
-            .then(result => {
-                // if one of them is found
-                if (result !== null) {
-                    // if the match cause is the username
-                    if (result.username == req.body.username) {
-                        console.log(`username ${result.username} is already used`);
-                    } else {
-                        console.log(`email ${result.email} is already used`);
-                    }
+        .then(result => {
+            // if one of them is found
+            if (result !== null) {
+                // if the match cause is the username
+                if (result.username == req.body.username) {
+                    // THOSE console.log() WILL BE REMPLACE BY res.send() or res.render()
+                    console.log(`username ${result.username} is already used`);
                 } else {
-                    // account registration
-                    console.log('Ok !');
+                    console.log(`email ${result.email} is already used`);
+                }
 
-                    // force: true will drop the table if it already exists
-                    db.sequelize.sync({ force: false })
-                        .then(() => db.accounts.create({
-                            username: req.body.username,
-                            email: req.body.email,
-                            password: sha512(req.body.password.toLowerCase()).toString('hex'),
-                            authority: 0,
-                            emailRegistration: req.body.email,
-                            registrationIp: reqip.getClientIp(req),
-                        }))
-                        .then(e => {
-                            console.log(e.toJSON());
-                        });
+                res.redirect('/');
+            } else {
+                // account registration
+                console.log('Ok !');
 
-                    res.redirect('/success');
-                };
+                db.sequelize.sync()
+                    .then(() => db.Accounts.create({
+                        username: req.body.username,
+                        email: req.body.email,
+                        password: sha512(req.body.password.toLowerCase()).toString('hex'),
+                        authority: 0,
+                        emailRegistration: req.body.email,
+                        registrationIp: reqip.getClientIp(req),
+                    }))
+                    .then(e => {
+                        console.log(e.toJSON());
+                    });
 
-                app.get('/success', (req, res) => {
-                    res.sendFile(`${process.cwd()}/public/success.html`);
-                });
+                res.redirect('/success');
+            };
+
+            app.get('/success', (req, res) => {
+                res.sendFile(`${process.cwd()}/public/success.html`);
             });
-
-
+        });
     });
-
 }

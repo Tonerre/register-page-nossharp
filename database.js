@@ -21,7 +21,7 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
-const accounts = sequelize.define('accounts', {
+const Accounts = sequelize.define('accounts', {
     username: {
         type: Sequelize.STRING,
     },
@@ -43,9 +43,8 @@ const accounts = sequelize.define('accounts', {
 });
 
 
-
 module.exports = {
     Sequelize,
     sequelize,
-    accounts
+    Accounts
 } 
