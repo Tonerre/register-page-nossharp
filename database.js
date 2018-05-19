@@ -22,12 +22,12 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
-var Accounts = sequelize.define('accounts', {
+let Accounts = sequelize.define('accounts', {
     username: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
     },
     email: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
     },
     password: {
         type: Sequelize.STRING
@@ -42,9 +42,6 @@ var Accounts = sequelize.define('accounts', {
         type: Sequelize.INTEGER
     }
 });
-
-
-
 
 module.exports = {
     Sequelize,
