@@ -8,7 +8,7 @@ module.exports = app => {
     });
 
     app.post('/register', (req, res) => {
-
+        
         // search for existing username or email
         db.Accounts.findOne({
             where: {
@@ -32,8 +32,6 @@ module.exports = app => {
                 res.redirect('/');
             } else {
                 // account registration
-                console.log('Ok !');
-
                 db.sequelize.sync()
                     .then(() => db.Accounts.create({
                         username: req.body.username,

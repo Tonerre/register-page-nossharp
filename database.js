@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('postgres', 'postgres', 'root', {
-    host: 'localhost',
+const sequelize = new Sequelize('postgres', 'postgres', null, {
+    host: '192.168.99.100',
+    port: 32781,
     dialect: 'postgres',
 
     pool: {
@@ -21,7 +22,7 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
-const Accounts = sequelize.define('accounts', {
+var Accounts = sequelize.define('accounts', {
     username: {
         type: Sequelize.STRING,
     },
@@ -41,6 +42,8 @@ const Accounts = sequelize.define('accounts', {
         type: Sequelize.INTEGER
     }
 });
+
+
 
 
 module.exports = {
