@@ -43,6 +43,11 @@ let Accounts = sequelize.define('accounts', {
     }
 });
 
+// If an error is triggered with the Model
+/* Accounts.sync().then(function () {
+    return Accounts.create()
+}); */
+
 module.exports = {
     Sequelize,
     sequelize,

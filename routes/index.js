@@ -25,9 +25,9 @@ module.exports = app => {
                     // if the match cause is the username
                     if (result.username == req.body.username) {
                         // THOSE console.log() WILL BE REMPLACE BY res.send() or res.render()
-                        console.log(`username ${result.username} is already used`);
+                        res.send(`username '${result.username}' is already used !`);
                     } else {
-                        console.log(`email ${result.email} is already used`);
+                        res.send(`email '${result.email}' is already used !`)
                     }
 
                     res.redirect('/');
@@ -54,4 +54,4 @@ module.exports = app => {
                 });
             });
     });
-}
+}       
